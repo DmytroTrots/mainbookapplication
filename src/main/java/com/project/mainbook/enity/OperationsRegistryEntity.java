@@ -1,6 +1,12 @@
 package com.project.mainbook.enity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 @Table(name = "operation_registry")
 @Entity
@@ -21,13 +27,42 @@ public class OperationsRegistryEntity {
     private Integer credit;
 
     @Column(name = "amount_of_money", nullable = false)
-    private Integer amountOfMoney;
+    private BigDecimal amountOfMoney;
 
-    @Column(name = "debit_analytics", nullable = false)
-    private String debit_analytics;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_time")
+    private Date createTime;
 
-    @Column(name = "credit_analytics", nullable = false)
-    private String creditAnalytics;
+    @Transient
+    private List<String> listOfDebitAnalytics;
+
+    @Transient
+    private List<String> listOfCreditAnalytics;
+
+    public List<String> getListOfDebitAnalytics() {
+        return listOfDebitAnalytics;
+    }
+
+    public void setListOfDebitAnalytics(List<String> listOfDebitAnalytics) {
+        this.listOfDebitAnalytics = listOfDebitAnalytics;
+    }
+
+    public List<String> getListOfCreditAnalytics() {
+        return listOfCreditAnalytics;
+    }
+
+    public void setListOfCreditAnalytics(List<String> listOfCreditAnalytics) {
+        this.listOfCreditAnalytics = listOfCreditAnalytics;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public Integer getId() {
         return id;
@@ -61,27 +96,11 @@ public class OperationsRegistryEntity {
         this.credit = credit;
     }
 
-    public Integer getAmountOfMoney() {
+    public BigDecimal getAmountOfMoney() {
         return amountOfMoney;
     }
 
-    public void setAmountOfMoney(Integer amountOfMoney) {
+    public void setAmountOfMoney(BigDecimal amountOfMoney) {
         this.amountOfMoney = amountOfMoney;
-    }
-
-    public String getDebit_analytics() {
-        return debit_analytics;
-    }
-
-    public void setDebit_analytics(String debit_analytics) {
-        this.debit_analytics = debit_analytics;
-    }
-
-    public String getCreditAnalytics() {
-        return creditAnalytics;
-    }
-
-    public void setCreditAnalytics(String creditAnalytics) {
-        this.creditAnalytics = creditAnalytics;
     }
 }
