@@ -2,12 +2,16 @@ package com.project.mainbook.service;
 
 import com.project.mainbook.enity.OperationsRegistryEntity;
 import com.project.mainbook.repository.OperationRegistryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class OperationRegistryService {
+
+    private static final Logger logger = LoggerFactory.getLogger(OperationRegistryService.class);
 
     private final OperationRegistryRepository operationRegistryRepository;
 
@@ -16,6 +20,7 @@ public class OperationRegistryService {
     }
 
     public OperationsRegistryEntity save(OperationsRegistryEntity operationsRegistry){
+        logger.info("Operation " + operationsRegistry.getId() + " was added: Credit - " + operationsRegistry.getCredit() + ", Debit - " + operationsRegistry.getDebit()+ ", Amount of Money - " + operationsRegistry.getAmountOfMoney());
         return operationRegistryRepository.save(operationsRegistry);
     }
 
@@ -24,6 +29,7 @@ public class OperationRegistryService {
     }
 
     public String monthScheduledAction(){
+        logger.info("Monthly action was executed");
         return "Some logic implemented here";
     }
 

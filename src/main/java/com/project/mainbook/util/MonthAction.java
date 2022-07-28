@@ -13,7 +13,7 @@ public class MonthAction {
         this.operationRegistryService = operationRegistryService;
     }
 
-    @Scheduled(cron = "0 0 0 ? 1/1 * *", zone = "UTC")
+    @Scheduled(cron = "0 59 21 * 1-12 *", zone = "UTC")
     public void run() {
         operationRegistryService.monthScheduledAction();
     }
