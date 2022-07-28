@@ -15,8 +15,6 @@ import java.util.List;
 @Service
 public class AnalyticsService {
 
-    private static final Logger logger = LoggerFactory.getLogger(OperationRegistryService.class);
-
     private final AnalyticsRepository analyticsRepository;
 
     public AnalyticsService(AnalyticsRepository analyticsRepository) {

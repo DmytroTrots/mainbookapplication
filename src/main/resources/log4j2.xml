@@ -5,7 +5,7 @@
         <Property name="APP_LOG_ROOT">D:/log</Property>
     </Properties>
     <Appenders>
-        <Console name="Console" target="SYSTEM_OUT" follow="true">
+        <Console name="Console" level="trace" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_PATTERN}" />
         </Console>
 
@@ -22,7 +22,7 @@
     </Appenders>
     <Loggers>
 
-        <Logger name="com.project.mainbook" additivity="false">
+        <Logger name="com.project.mainbook" level="trace" additivity="false">
             <AppenderRef ref="appLog" />
             <AppenderRef ref="Console" />
         </Logger>
