@@ -20,8 +20,9 @@ public class OperationRegistryService {
     }
 
     public OperationsRegistryEntity save(OperationsRegistryEntity operationsRegistry){
-        logger.info("Operation " + operationsRegistry.getId() + " was added: Credit - " + operationsRegistry.getCredit() + ", Debit - " + operationsRegistry.getDebit()+ ", Amount of Money - " + operationsRegistry.getAmountOfMoney());
-        return operationRegistryRepository.save(operationsRegistry);
+        operationsRegistry = operationRegistryRepository.save(operationsRegistry);
+        logger.trace("Operation " + operationsRegistry.getId() + " was added: Credit - " + operationsRegistry.getCredit() + ", Debit - " + operationsRegistry.getDebit()+ ", Amount of Money - " + operationsRegistry.getAmountOfMoney());
+        return operationsRegistry;
     }
 
     public List<OperationsRegistryEntity> findAllWithAnalytics(){
@@ -29,7 +30,7 @@ public class OperationRegistryService {
     }
 
     public String monthScheduledAction(){
-        logger.info("Monthly action was executed");
+        logger.trace("Monthly action was executed");
         return "Some logic implemented here";
     }
 
